@@ -1,7 +1,11 @@
 baseURL = "https://jacquessmuts.github.io/"
 languageCode = "en-us"
-title = "Jacques Smuts Blog"
+title = "Jacques Smuts"
 theme = "hugo-nuo"
+enableRobotsTXT = true
+
+copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce."
+
 
 [[menu.main]]
   name = "Home"
@@ -15,7 +19,19 @@ theme = "hugo-nuo"
   identifier = "works"
   url = "https://github.com/jacquessmuts"
 
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+
 [params]
+  author = "Jacques Smuts"
+  avatar = "images/avatar.png"
+  seotitle = "Jacques Smuts Blog"
+  subtitle = "~ Android Developer~"
+  description = "This is a blog for Jacques Smuts."
+  paginate = 10
   email = "githubpage@jacquessmuts.com"
   github = "jacquessmuts"
   twitter = "jacquessmuts"
