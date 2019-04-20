@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "https://jacquessmuts.github.io/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Jacques Smuts Blog"
 theme = "hugo-nuo"
 
 [[menu.main]]
