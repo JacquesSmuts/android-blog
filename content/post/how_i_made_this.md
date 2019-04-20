@@ -22,3 +22,39 @@ So I removed the "draft:true" property from this post, felt like an idiot for ta
 
 Finally, I realized I had forgotten to set the new domain in my config file after deploying. So I fixed that and now everything seems to be working, I think.
 
+---
+
+I'm putting further tests in here. For example:
+
+### Code Highlighting
+
+{{< highlight java "linenos=table,linenostart=1">}}
+inline fun<reified T: Any> get(key: String): T? {
+
+    val instance = FirebaseRemoteConfig.getInstance()
+
+    return when (T::class) {
+        Long::class -> instance.getLong(key) as T?
+        String::class -> instance.getString(key) as T?
+        else -> throw IllegalArgumentException("the ${T::class} class is not supported yet")
+    }
+}
+{{< / highlight >}}
+
+### Git Gist
+
+
+{{% gist "JacquesSmuts" "217c77ec0e4d8ec8409ae45c3516ec07" %}}
+
+### Image with zooming and title
+
+{{% figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." height="400" class="zoomable" %}}
+
+### Video
+
+{{% video
+  "/videos/how_i_made_this3.mp4" %}}
+
+### Embedded Youtube
+
+{{% youtube "TdO8hR2QAUs" %}}
