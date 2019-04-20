@@ -16,7 +16,7 @@ I chose the theme [Hugo-Nuo](https://themes.gohugo.io/hugo-nuo/) because it look
 
 It was not crashing, so I deployed it to a Github static page using the official [Hugo Guide](https://gohugo.io/hosting-and-deployment/hosting-on-github/) for hosting on Github.
 
-Then I wrote this blog post using the standard template by running hugo new post/how_i_made_this.png and writing the rest in the resulting .md file. I ran deploy.sh (from the Hugo Guide's instructions) and did not see this post.
+Then I wrote this blog post using the standard template by running hugo new post/how_i_made_this.md and writing the rest in the resulting .md file. I ran deploy.sh (from the Hugo Guide's instructions) and did not see this post.
 
 So I removed the "draft:true" property from this post, felt like an idiot for taking 30min to figure that out, then deployed again.
 
