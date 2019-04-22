@@ -24,6 +24,8 @@ Finally, I realized I had forgotten to set the new domain in my config file afte
 
 ---
 
+Nick Rout noticed that the `quote` styling didn't come out right, so I changed that. It also screwed up my normal code highlighting, but I think it's better to use GitHub gists anyway, and I'm too lazy to create my own custom code styling template and shortcode in hugo. I've had some issues with the code highlighting's limited support for Kotlin so I'm basically just pretending it doesn't exist.
+
 I'm putting further tests in here. For example:
 
 ### Code Highlighting
@@ -40,6 +42,8 @@ inline fun<reified T: Any> get(key: String): T? {
     }
 }
 {{< / highlight >}}
+
+Which you'll notice is incorrectly styled with red thanks to the single-quote styling change I made.
 
 ### Git Gist
 
