@@ -55,7 +55,7 @@ Okay, I have to admit, it doesn't seem like we made that much of a difference. B
 
 The two dependency graphs are similar, except that a moment's thoughtlessness can pull everything into spaghetti in the first instance. I have used the `internal` modifier in my database module, which means that a developer would be stopped from breaking a delicate separation of concerns with a single function.
 
-{{% figure src="/images/modularization6.png" alt="compiler error 2" title="Trying to access the database directly from MainActivity.kt." height="100" class="zoomable" %}}
+{{% figure src="/images/modularization6.png" alt="compiler error 2" title="Trying to access the database directly from MainActivity.kt." width="80%" class="zoomable" %}}
 
 If you run into these errors in a project, you know the project is well modularized.
 
@@ -66,4 +66,3 @@ We have looked at two ways in which to analyze the state of your modularization:
 1. [APK Dependency Graph Generator](https://github.com/alexzaitsev/apk-dependency-graph); and
 2. The prevalance of the `internal` modifier (or lack of `public` in Java)
 
-Look forward to more updates on modularization, coming soon.

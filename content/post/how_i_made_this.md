@@ -26,6 +26,8 @@ Finally, I realized I had forgotten to set the new domain in my config file afte
 
 Nick Rout noticed that the `quote` styling didn't come out right, so I changed that. It also screwed up my normal code highlighting, but I think it's better to use GitHub gists anyway, and I'm too lazy to create my own custom code styling template and shortcode in hugo. I've had some issues with the code highlighting's limited support for Kotlin so I'm basically just pretending it doesn't exist.
 
+Nick also noticed that the images stretch badly on mobile. This was because I was setting a constant height to my images, and the width expanded only up until it hit the edge. So I changed all my images to use width=percentage% and now the scaling is right.
+
 I'm putting further tests in here. For example:
 
 ### Code Highlighting
@@ -52,7 +54,7 @@ Which you'll notice is incorrectly styled with red thanks to the single-quote st
 
 ### Image with zooming and title
 
-{{% figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." height="400" class="zoomable" %}}
+{{% figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." width="40%" class="zoomable" %}}
 
 ### Video
 
