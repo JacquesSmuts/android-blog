@@ -1,7 +1,7 @@
 ---
 title: "Is your modularization making any progress?"
 author: "Jacques Smuts"
-cover: "/images/modularization1.png"
+cover: "/images/modularization3.png"
 tags: ["android", "modularization", "kotlin"]
 date: 2019-04-20T21:15:17+02:00
 draft: false
