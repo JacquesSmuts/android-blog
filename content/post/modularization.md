@@ -65,4 +65,3 @@ We have looked at two ways in which to analyze the state of your modularization:
 
 1. [APK Dependency Graph Generator](https://github.com/alexzaitsev/apk-dependency-graph); and
 2. The prevalance of the `internal` modifier (or lack of `public` in Java)
-
