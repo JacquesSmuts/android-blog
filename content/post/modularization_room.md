@@ -11,6 +11,8 @@ If you're thinking of modularizing your Android App and you use Android Room, yo
 
 <!--more-->
 
+## Room: Only In Your Database Module
+
 Room is great, and so is modularization. If you're using Room, you probably have several [Room Entity Objects](https://developer.android.com/training/data-storage/room/defining-data) that look kinda like this:
 
 {{% gist "JacquesSmuts" "0fc7ced6f167b435f41882c36e9a80cf" %}}
@@ -30,6 +32,8 @@ This happens because you're passing the `Entity` from your database module to ot
 
 **Don't do this.** Please. It breaks the core concept of [Information Hiding](https://en.wikipedia.org/wiki/Information_hiding) as would be required by a project that implements a proper Separation of Concerns.
 
+### Map Your Entity
+
 Instead, you should have two distinct objects. You should one object that represents the database Entity, and one object for passing around the pure data. Your database module should be literally the only module which imports the Room library. If any other module imports those implementation details of the database module, then you are not `Information Hiding` as you should. This is especially true if you may want to change out your Room database for something like [SqlDelight](https://github.com/square/sqldelight). 
 
 Instead, map your data class to a new `Entity`, like so:
@@ -43,3 +47,22 @@ Perhaps you have some other way of mapping to and from your `User` to your `User
 
 I suggest you turn all your database classes into `internal` class, [as I've discussed before]({{< ref "/post/modularization" >}}). This is a bit of a tedious thing to do sometimes, but you will be super-happy in the long term. Future work and refactoring will be very easy.
 
+There is one other thing though.
+
+### LiveData + Room, But In Another Module
+
+One of the nice things about LiveData and Room is how easily they interact.
+
+But then you have this problem in your Repository
+
+{{% figure src="/images/modularization_room2.png" alt="compiler error" title="If you see this warning, you're headed in the right direction." width="80%"  class="zoomable" %}}
+
+Turns out you can't use LiveData to hook directly on to your database, because that exposes internal database entities outside the module. You want LiveData but you still want a proper separation of concerns. How? You use the LiveData Transformation function.
+
+{{% gist "JacquesSmuts" "edde89d887a97e2dafe7da164f39ed5d" %}}
+
+You get to have your module and access it too.
+
+### Conclusion
+
+I showed you why you shouldn't pass around your Room @Entity, and how to separate your modules without losing functionality.
