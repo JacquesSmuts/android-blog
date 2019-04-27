@@ -3,8 +3,8 @@ title: "Don't Pass Around Your Room/Database Entity"
 author: "Jacques Smuts"
 cover: "/images/modularization_room1.png"
 tags: ["Android", "Room", "Modularization", "Kotlin"]
-date: 2019-04-21T10:35:54+02:00
-draft: true
+date: 2019-04-25T10:35:54+02:00
+publishdate: 2019-04-29T14:00:00+02:00
 ---
 
 If you're thinking of modularizing your Android App and you use Android Room, you should not pass around your Room Entity.
@@ -61,7 +61,7 @@ Turns out you can't use LiveData to hook directly on to your database, because t
 
 {{% gist "JacquesSmuts" "edde89d887a97e2dafe7da164f39ed5d" %}}
 
-You get to have your module and access it too.
+This means you have a direct LiveData pipeline from your ViewModel/View to your database, without actually exposing your internal database components. You get to have your module and access it too.
 
 ### Conclusion
 

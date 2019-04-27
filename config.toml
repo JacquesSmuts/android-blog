@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Jacques Smuts"
 theme = "hugo-nuo"
 enableRobotsTXT = true
+googleAnalytics = "UA-139178159-1"
 
 PygmentsCodeFences = true
 PygmentsStyle = "friendly"
