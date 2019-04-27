@@ -28,6 +28,13 @@ Nick Rout noticed that the `quote` styling didn't come out right, so I changed t
 
 Nick also noticed that the images stretch badly on mobile. This was because I was setting a constant height to my images, and the width expanded only up until it hit the edge. So I changed all my images to use width=percentage% and now the scaling is right.
 
+---
+
+For SEO purposes, I also added my site to GoogleAnalytics Console, and registered my site with Google Search Console to claim ownership of the domain according to google. I should now get pushed up on Google Search results a bit, and also get analytics on how many people visit my site or click through based on search terms, if I understand correctly.
+
+
+
+
 I'm putting further tests in here. For example:
 
 ### Code Highlighting
