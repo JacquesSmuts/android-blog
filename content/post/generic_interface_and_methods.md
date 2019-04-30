@@ -1,19 +1,20 @@
 ---
-title: "Using a Generic Interface and Method in Kotlin"
+title: "Generics + Reflection + Type Inference + Reified Type = Kotlin Magic"
 author: "Jacques Smuts"
-cover: "/images/Generic Interface and Method.jpg"
+cover: "/images/generic_interfaces3.png"
 tags: ["android", "kotlin", "KFunction", "KFunction1", "KSuspendFunction", "KSuspendFunction1"]
-date: 2019-04-25T20:35:09+02:00
-publishdate: 2019-04-29T14:00:00+02:00
+date: 2019-05-01T08:30:00+02:00
+<!-- publishdate: 2019-05-01T10:00:00+02:00 -->
+draft: false
 ---
 
-With Kotlin, you can easily pass a generic interface and its associated method to a function. This article shows a specific example of higher-order functions.
+With Kotlin, it's easier than ever to code with reflection and generics. This post attempts to give one example.
 
 <!--more-->
 
-## An unlikely scenario
+## Background: An unlikely scenario
 
-I couldn't think of a simpler scenario to demonstrate KFunction and KSuspendFunction, so please bear with me when I present this unlikely scenario. 
+I couldn't think of a simpler scenario to demonstrate KFunction and KSuspendFunction working well in tandem with Generics, so please bear with me when I present this unlikely scenario. 
 
 Let's assume you have several different endpoints and you need to differentiate between them easily, even though they can change dynamically. If you're an Android developer, you're probably used to Retrofit and its associated Interfaces. You have several classes that look like this:
 
@@ -56,7 +57,7 @@ This is almost the same as our first implementation, except for the commented pa
 
 But this means we have to write this code for each of our interfaces. One for `GitHubService`, one for `BitBucketService`, and so forth. That's a lot better, but still not good enough. If we wanta single function to handle all of these api calls, then we must answer this question:
 
-- Can we use generics to take **ANY** interface and call **ANY** function from that interface, and return **ANY** result, **and still be type safe**?
+- Can we write a function that takes **ANY** interface and call **ANY** function from that interface, and return **ANY** result, **and still be type safe**?
 
 Yes, with Reflection and Generics you can!
 
@@ -72,17 +73,24 @@ All I did was
 2. Replace any reference to `AwsCodeCommitService` with the generic `Service`
 3. Replaced any reference to `List<AwsRepo>` with the generic `Result`
 
-And it works and accepts literally any `interface::method` pair. I wanted to restrict it a bit, so I made sure that `Service` extends the `RetroService` interface I defined all the way at the top. Now it only accepts the right methods.
+And it works and accepts literally any `interface::method` pair which returns the expected Result type. I wanted to restrict it a bit, so I made sure that `Service` extends the `RetroService` interface I defined all the way at the top. Now it only accepts the right methods.
 
 However...
 
 {{% figure src="/images/generic_interfaces2.png" alt="compiler error" title="If you see this warning, you're headed in the right direction. " width="90%"  class="zoomable" %}}
 
-The `GitHubRepos` api call takes a username as an input parameter. So now the IDE is telling you you need KFunction2. What's that? It's just a function reference with a single parameter. So let's create that function and see if it works.
+The `GitHubRepos` api call takes a username as an input parameter. So now the IDE is telling you that `listGitHubRepos(username)` is a KFunction2. What's that? 
+
+- KFunction1 is a function reference with zero input arguments, e.g. `listAwsRepos()`
+- KFunction2 is a function reference with one input argument, e.g. `listGitHubRepos(username: String)`
+
+So let's create another `doApiCall()`, except that it takes kFunction2 as an input.
 
 {{% gist "JacquesSmuts" "499cab2b907298bc03de8d02d19c22c0" %}}
 
-And it does. All I had to do was specify the `Input` Type as a Generic, and pass the `input` into the `KFunction2`. This means in other words that I can call any function with any argument, and do a lot of additional work, on a list of classes. The best is that because of Kotlin's intensely awesome type inference, I never even had to pass in the `<Service, Input, Result>` types. It was inferred automatically
+And this function works. All we had to do was add the `Input` Type as a Generic type, and pass the `input` into the `KFunction2`. This means in other words that we can pass in a list of unknown classes, a function and an input. If any class in that list of unknown classes is the correct type, the right function will be called on that class. 
+
+The best part is that because of Kotlin's intensely awesome type inference, I never even had to pass in the `<Service, Input, Result>` types. It was inferred automatically.
 
 
 ## Suspend Functions
@@ -101,7 +109,7 @@ I don't even know why anyone would land in this bizarre scenario of needing to i
 - Generics are amazing
 - Kotlin Generics + Reflection + Type Inference is mindblowing
 
-If you can get your mind around higher-order functions, generics, and reflection, you will become way more efficient as a developer. Do it.
+If you can get your mind around higher-order functions, generics, and reflection, you will become way more efficient as a developer. I hope this shows an example why.
 
 
 
