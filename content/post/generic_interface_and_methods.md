@@ -110,6 +110,3 @@ I don't even know why anyone would land in this bizarre scenario of needing to i
 - Kotlin Generics + Reflection + Type Inference is mindblowing
 
 If you can get your mind around higher-order functions, generics, and reflection, you will become way more efficient as a developer. I hope this shows an example why.
-
-
-

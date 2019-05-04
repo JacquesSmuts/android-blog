@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sites on Jacques Smuts</title>
+    <link>https://jacquessmuts.github.io/sites/</link>
+    <description>Recent content in Sites on Jacques Smuts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    
+	<atom:link href="https://jacquessmuts.github.io/sites/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://jacquessmuts.github.io/sites/dependency_positivitea_011/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jacquessmuts.github.io/sites/dependency_positivitea_011/</guid>
+      <description>Apk dependency graph      body { overflow: hidden; } #editor { margin: 0; position: absolute; top: 0; width: 700px; left: 0; height: 100%; } #sidr { width: 700px; }      reorderLive editor    Circle size
+Charge multiplier
+Link strength
+Show names Show inactive elements help    // This one is used by default // Groups are set based on the Prefixes function default_coloring(d) { return color(d.</description>
+    </item>
+    
+  </channel>
+</rss>

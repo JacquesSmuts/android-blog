@@ -4,6 +4,7 @@ title = "Jacques Smuts"
 theme = "hugo-nuo"
 enableRobotsTXT = true
 googleAnalytics = "UA-139178159-1"
+disqusShortname = "jacquessmuts"
 
 PygmentsCodeFences = true
 PygmentsStyle = "friendly"
