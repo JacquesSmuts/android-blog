@@ -1,10 +1,10 @@
 ---
-title: "Creating and Deploying an Android Library, Quick and Easy"
+title: "Creating and Deploying an Android Library via CircleCI"
 author: "Jacques Smuts"
 cover: "/images/library_template3.png"
 tags: ["android", "kotlin", "library", "CircleCI"]
-date: 2019-05-03T22:19:00+02:00
-draft: true
+date: 2019-05-07T22:19:00+02:00
+draft: false
 ---
 
 This is the template I use to create new Android libraries with CircleCI support for Continuous Deployment.
@@ -12,19 +12,16 @@ This is the template I use to create new Android libraries with CircleCI support
 <!--more-->
 
 ## Libraries: Better Than Util Classes
-
-I often find myself copying code from other projects. After some discussion with my colleagues we decided to put everything that we re-use into libraries. Libraries are better than copy-pasting for several reasons:
+I often find myself copying code from other projects. After some discussion with my colleagues we decided to put everything that we re-use into libraries. Even those tiny util functions you usually just copy-paste when you need it. Libraries are better than copy-pasting for several reasons:
 
 1. It makes future work easier
-2. It forces separation of concerns
-3. Writing a library teaches you to think more abstractly about a problem you're trying to solve.
-4. Future work can benefit everyone, rather than just the project you're on
+2. Writing a library teaches you to think more abstractly about any problem you're trying to solve.
+3. Future work can benefit everyone, rather than just the project you're on
+4. It forces separation of concerns
 
 Plus many more reasons, but you probably know this already. So here's the steps I follow to create a library:
 
 ## How to Make a Library
-
-
 
 #### 1. Create a `LibraryNameExample` project in Android Studio and add a `LibraryName` module.
 
@@ -47,6 +44,8 @@ For my CircleCI config.yml file, I literally just copy-paste [the same file](htt
 Also remember to add the environment variable `BINTRAY_KEY` to your CircleCI settings, like so:
 
 {{% figure src="/images/library_template1.png" alt="CircleCI" title="Use your own Bintray API key, from Bintray User settings." width="80%" class="zoomable" %}}
+
+You may also want to set up CircleCI to build only on pull requests. But don't worry, this config won't deploy without your say-so.
 
 #### 6. Deploy!
 

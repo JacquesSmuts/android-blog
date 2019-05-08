@@ -25,6 +25,12 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   url = "https://github.com/jacquessmuts"
 
 [[menu.main]]
+  name = "I'm Famous, Mom"
+  weight = 30
+  identifier = "references"
+  url = "/post/references/"
+
+[[menu.main]]
   name = "Tags"
   weight = 30
   identifier = "tags"
