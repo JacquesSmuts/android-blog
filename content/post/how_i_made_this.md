@@ -56,7 +56,6 @@ Which you'll notice is incorrectly styled with red thanks to the single-quote st
 
 ### Git Gist
 
-
 {{% gist "JacquesSmuts" "217c77ec0e4d8ec8409ae45c3516ec07" %}}
 
 ### Image with zooming and title
@@ -71,3 +70,7 @@ Which you'll notice is incorrectly styled with red thanks to the single-quote st
 ### Embedded Youtube
 
 {{% youtube "TdO8hR2QAUs" %}}
+
+### Linking to another post
+
+[References]({{% ref "/post/references" %}})
