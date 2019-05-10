@@ -4,7 +4,7 @@ author: "Jacques Smuts"
 cover: "/images/generic_interfaces3.png"
 tags: ["android", "kotlin", "KFunction", "KFunction1", "KSuspendFunction", "KSuspendFunction1", "Receiver Function"]
 date: 2019-05-08T17:54:58+02:00
-draft: true
+draft: false
 ---
 
 KFunction can be written in more than one way. Here's a list of analogues, plus some criticism of the Reciever Function.
