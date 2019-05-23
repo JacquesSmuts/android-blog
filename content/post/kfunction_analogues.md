@@ -7,7 +7,7 @@ date: 2019-05-08T17:54:58+02:00
 draft: false
 ---
 
-KFunction can be written in more than one way. Here's a list of analogues, plus some criticism of the Reciever Function.
+KFunction can be written in more than one way. Here's a list of analogues, plus some criticism of the Receiver Function.
 
 <!--more-->
 

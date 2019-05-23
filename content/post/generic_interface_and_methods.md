@@ -112,6 +112,8 @@ I don't even know why anyone would land in this bizarre scenario of needing to i
 If you can get your mind around higher-order functions, generics, and reflection, you will become way more efficient as a developer. I hope this shows an example why.
 
 
-#### Follow-Up
+#### Follow-Up and Thanks
 
 I wrote a [follow-up article]({{% ref "/post/kfunction_analogues" %}}) based on some nice feedback I got.
+
+I'd also like to thank my colleague, [Jannie](https://twitter.com/pantsula) at Flat Circle for coming up with this problem for me to solve.
