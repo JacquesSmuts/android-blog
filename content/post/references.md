@@ -5,7 +5,13 @@ author: "Jacques Smuts"
 draft: false
 ---
 
-### List of appearances and refences, from new to old
+A list of achievements that are publicly presented
+
+<!--more-->
+
+### List of appearances and references, from new to old
+
+*2019-05-26*: Callback Hell Article featured in [Kotlin Weekly 147](https://mailchi.mp/kotlinweekly/kotlin-weekly-147) and [Android Weekly 363](https://androidweekly.net/issues/issue-363)
 
 *2019-05-14*: Generics Article featured in [Android Weekly #361](https://androidweekly.net/issues/issue-361)
 

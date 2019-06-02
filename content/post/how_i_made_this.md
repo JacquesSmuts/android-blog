@@ -32,7 +32,9 @@ Nick also noticed that the images stretch badly on mobile. This was because I wa
 
 For SEO purposes, I also added my site to GoogleAnalytics Console, and registered my site with Google Search Console to claim ownership of the domain according to google. I should now get pushed up on Google Search results a bit, and also get analytics on how many people visit my site or click through based on search terms, if I understand correctly.
 
+---
 
+I added the [Kotlin Playgrounds](https://github.com/sam-ma/hugo-shortcodes) shortcode as well, in order to make my kotlin more interactive
 
 
 I'm putting further tests in here. For example:
