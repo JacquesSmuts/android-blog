@@ -15,7 +15,9 @@ Working with coroutines is subtly different from normal locking functions. Intro
 
 So hopefully you're aware of basic thread-safety in Kotlin/Java. Sometimes you have a shared state of some kind that should only be accessed by one thread at a time. If you're coming from Java, you probably use the `synchronized(lock)` operator in order to ensure that a shared mutable object can only be accessed one at a time. For some great reading on this topic I suggest [this post on Medium](https://proandroiddev.com/synchronization-and-thread-safety-techniques-in-java-and-kotlin-f63506370e6d).
 
-#### So imagine a scenario where we are running a few long-running operations (like API calls), but we want to make sure that we never run more than one such operation at a time. Before Coroutines I'd probably write it something like this:
+#### So imagine a scenario where we are running a few long-running operations (like API calls), but we want to make sure that we never run more than one such operation at a time. 
+
+When I was starting out with Java threading I'd probably write something risky like this:
 
 {{< kotlin >}}
 import kotlinx.coroutines.GlobalScope
@@ -58,9 +60,9 @@ Press the play button above (assuming you didn't block JavaScript on this page) 
 
 ## Badly, with Coroutines
 
-If you're already using Coroutines you should know that a suspending function does not always block a thread. In some circumstances it pauses (suspends) the operation so that other operations can use the CPU.
+If you're already using coroutines you should know that a suspending function does not always block a thread. In some circumstances it pauses (suspends) the operation so that other operations can use the CPU.
 
-In the example above, I'm using coroutines to launch the function, but I'm still blocking the thread every time the `runFunction()` function is performed, which means I'm not really utilizing the full power of Kotlin Coroutines. So, what if we replaced the Sleep function with a suspend function, like delay()?
+In the example above, I'm using coroutines to launch the function, but I'm still blocking the thread every time the `runFunction()` function is performed, which means I'm not really utilizing the full power of Kotlin coroutines. So, what if we replaced the blocking `Sleep` function with the suspending `delay()` function?
 
 {{< kotlin >}}
 import kotlinx.coroutines.GlobalScope
@@ -96,9 +98,9 @@ class SyncLockClass() {
 
 {{< /kotlin >}}
 
-Try to run the above code and you'll get an error: `The 'delay' suspension point is inside a critical section`. What does this mean? Well, it would ideally display as a warning in my first example as well. You should not delay or suspend or sleep your thread inside of a synchronized() block, as explained somewhat [in this StackOverflow Thread](https://stackoverflow.com/questions/4160413/why-is-sleeping-inside-a-critical-section-a-concurrency-issue). So how do we solve this issue?
+Try to run the above code and you'll get an error: `The 'delay' suspension point is inside a critical section`. What does this mean? You should not delay or suspend or sleep your thread inside of a synchronized() block, as explained somewhat [in this StackOverflow Thread](https://stackoverflow.com/questions/4160413/why-is-sleeping-inside-a-critical-section-a-concurrency-issue). It would ideally display as a warning in my first example as well. A critical section of code (such as in between the `synchronized` block) should be as short as possible. It is not for long-running operations because it blocks the thread. But a suspending function does not necessarily block the thread. 
 
-Maybe you're an oldschool Java dev and you think to just use ReentrantLock() instead. After all, synchronized is merely a simplified version of ReentrantLock. This is cheating to try and be smarter than the compiler. Don't do this. Run the code below to see why.
+So how do we solve this issue? Maybe you're an oldschool Java dev and you think to just use ReentrantLock() instead. After all, synchronized is merely a simplified version of ReentrantLock. This is cheating to try and be smarter than the compiler. Don't do this. Run the code below to see why.
 
 {{< kotlin >}}
 import kotlinx.coroutines.GlobalScope
@@ -179,9 +181,7 @@ class SyncLockClass() {
 }
 {{< /kotlin >}}
 
-And now things are working fine. All of the api calls are kicked off as soon as possible, as they should be, and none of the threads are locked. If you look at the timestamps you'll see that the events are also returned with the expected 100ms delay. The only way to have achieved this result in the first example is to have 10 threads at your disposal. In fact, I can probably increase the amount of coroutines I launch with this method. Let's push it until we break it:
-
-(This one produces a lot of output, so be careful when pressing play)
+And now things are working fine. All of the api calls are started as soon as possible and none of the threads are locked. If you look at the timestamps of the logs above you'll see that the events are also returned with the expected 100ms delay in between each one. The only way to have achieved this result using the same techniques as in the first example is to have 10 threads at your disposal. In fact, I can probably increase the amount of coroutines I launch with this method. Let's push it until we break it:
 
 {{< kotlin >}}
 import kotlinx.coroutines.GlobalScope
@@ -224,13 +224,15 @@ class SyncLockClass() {
 }
 {{< /kotlin >}}
 
-I didn't manage to break it with any amount of coroutines. The environment provided by the Kotlin playground only allows you to run for 10 seconds. The above code maximises that time without breaking anything, or blocking any threads. If you scroll through the logs you'll see that some of the old functions are eventually getting finished while more coroutines are still being launched. This just goes to show how powerful coroutines and suspending functions are.
+I didn't manage to break the Kotlin Playground with any amount of coroutines. The environment provided by the Kotlin playground only allows you to run for 10 seconds. The above code maximises that time without breaking anything, or blocking any threads. If you scroll through the logs you'll see that some of the old functions are eventually getting finished while more coroutines are still being launched. This just goes to show how powerful coroutines and suspending functions are.
 
-## Some Thoughts on Thread Safety
+## A Better way?
 
 Threading and concurrency is a difficult topic. It is exceptionally easy to shoot yourself in the foot, by for example creating a deadlock. I suggest you read [this great article by Roman Elizarov.](https://medium.com/@elizarov/deadlocks-in-non-hierarchical-csp-e5910d137cc) on how to avoid deadlocks in practical coroutines. (Thanks to [Johannes Jensen](https://github.com/spand) for the suggestion.)
 
-Our code sample above works, but it's still dangerous because you should avoid putting any suspending functions inside of a `critical section` of code, such as inside a mutex block. In other words, do not do what I did, unless it cannot be avoided. Ideally you want to avoid launching a coroutine or entering a suspend function until the conditions are ideal to do so. If you cannot stop a coroutine from being launched when it's not ready, you can at least queue up several suspend functions using the `Mutex` class.
+Our code sample above works, but it's still dangerous. If one function gets locked or indefinitely suspended for any reason, you end up in a deadlock. Ideally you want to avoid launching a coroutine or entering a suspend function until the conditions are ideal to do so. If you cannot stop a coroutine from being launched when it's not ready, you can at least queue up several suspend functions using the `Mutex` class.
+
+But since we're queuing things up, maybe it would be better to use something like the [BlockingQueue](https://docs.oracle.com/javase/8/docs/api/?java/util/concurrent/BlockingQueue.html) class in Java? I'm still investigating that part, but spoilers: [Channels](https://kotlinlang.org/docs/reference/coroutines/channels.html#channel-basics)
 
 ## Conclusion
 
