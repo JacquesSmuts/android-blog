@@ -1,5 +1,5 @@
 ---
-title: "How I made this"
+title: "How I Made This Website"
 author: "Jacques Smuts"
 cover: "/images/how_i_made_this1.png"
 tags: ["hugo", "jacques smuts"]

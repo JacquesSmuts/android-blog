@@ -41,7 +41,7 @@ class SyncLockClass() {
 	fun runFunction(input: Int) {
         println("start function $input")
 	    [mark]synchronized(lock) {[/mark]
-	        Thread.sleep(100) // This could also be a long-running calculation or an api call
+	        Thread.sleep(100) // This could also be a long-running calculation or an API call
 	        latestValue = input
 	    }
 	    println("finished function $input at ${System.currentTimeMillis()}")
@@ -88,7 +88,7 @@ class SyncLockClass() {
 	suspend fun runFunction(input: Int) {
         println("start function $input")
 	    synchronized(lock) {
-	        [mark]delay(100)[/mark] // This could also be a long-running calculation or an api call
+	        [mark]delay(100)[/mark] // This could also be a long-running calculation or an API call
 	        latestValue = input
 	    }
 	    println("finished function $input at ${System.currentTimeMillis()}")
@@ -127,7 +127,7 @@ class SyncLockClass() {
 	suspend fun runFunction(input: Int) {
         println("start function $input")
         reentrantLock.lock()
-	    [mark]delay(100)[/mark] // This could also be a long-running calculation or an api call
+	    [mark]delay(100)[/mark] // This could also be a long-running calculation or an API call
 	    latestValue = input
 	    reentrantLock.unlock()
 	    println("finished function $input at ${System.currentTimeMillis()}")
@@ -136,11 +136,11 @@ class SyncLockClass() {
 }
 {{< /kotlin >}}
 
-As you can see this is not the results we want at all. The lock breaks, and then it gets ignored. You'll probably have a runtime error in the log as well. So how do we fix this? We use a Mutex()
+As you can see this is not the results we want at all. The lock breaks, and then it gets ignored. You'll probably have a runtime error in the log as well. So how do we fix this? We use a Mutex.
 
 ## Coroutines.Sync.Mutex
 
-There is some things we can read online on Mutex. We've got [the class documentation](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.sync/-mutex/index.html), we have this nice [acricte](https://medium.com/@nazarivanchuk/shared-mutable-state-with-coroutines-33a85e903466) which explains how to use the mutex with a shared mutable state, and finally we have the [official kotlin guide](https://kotlinlang.org/docs/reference/coroutines/shared-mutable-state-and-concurrency.html#mutual-exclusion). That last link is probably the best one. 
+There are some things we can read online on Mutex. We've got [the class documentation](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.sync/-mutex/index.html), we have this nice [acricte](https://medium.com/@nazarivanchuk/shared-mutable-state-with-coroutines-33a85e903466) which explains how to use the mutex with a shared mutable state, and finally we have the [official kotlin guide](https://kotlinlang.org/docs/reference/coroutines/shared-mutable-state-and-concurrency.html#mutual-exclusion). That last link is probably the best one. 
 
 The important takeaway is that the Mutex is part of the Coroutines package, which means we know that this mutex takes the suspending nature of coroutines into account. So how would we use it in our example?
 
@@ -171,7 +171,7 @@ class SyncLockClass() {
 
     	println("running suspend function $input")
 	    [mark]mutex.withLock { [/mark]
-	    	delay(100) // This could also be a long-running calculation or an api call
+	    	delay(100) // This could also be a long-running calculation or an API call
 	        println("finished suspend function $input at ${System.currentTimeMillis()}")
 	        latestValue = input
 	    }
@@ -181,7 +181,7 @@ class SyncLockClass() {
 }
 {{< /kotlin >}}
 
-And now things are working fine. All of the api calls are started as soon as possible and none of the threads are locked. If you look at the timestamps of the logs above you'll see that the events are also returned with the expected 100ms delay in between each one. The only way to have achieved this result using the same techniques as in the first example is to have 10 threads at your disposal. In fact, I can probably increase the amount of coroutines I launch with this method. Let's push it until we break it:
+And now things are working fine. All of the API calls are started as soon as possible and none of the threads are locked. If you look at the timestamps of the logs above you'll see that the events are also returned with the expected 100ms delay in between each one. The only way to have achieved this result using the same techniques as in the first example is to have 10 threads at your disposal. In fact, I can probably increase the amount of coroutines I launch with this method. Let's push it until we break it:
 
 {{< kotlin >}}
 import kotlinx.coroutines.GlobalScope
@@ -213,7 +213,7 @@ class SyncLockClass() {
 		if (input < 4 || input % 50 == 0)
     		println("running suspend function $input")
 	    mutex.withLock {
-	    	delay(2) // This could also be a long-running calculation or an api call
+	    	delay(2) // This could also be a long-running calculation or an API call
 
 			if (input < 4 || input % 50 == 0)
 	        	println("finished suspend function $input at ${System.currentTimeMillis()}")
@@ -228,7 +228,7 @@ I didn't manage to break the Kotlin Playground with any amount of coroutines. Th
 
 ## A Better way?
 
-Threading and concurrency is a difficult topic. It is exceptionally easy to shoot yourself in the foot, by for example creating a deadlock. I suggest you read [this great article by Roman Elizarov.](https://medium.com/@elizarov/deadlocks-in-non-hierarchical-csp-e5910d137cc) on how to avoid deadlocks in practical coroutines. (Thanks to [Johannes Jensen](https://github.com/spand) for the suggestion.)
+Threading and concurrency is a difficult topic. It is exceptionally easy to shoot yourself in the foot, by for example creating a deadlock. I suggest you read [this great article by Roman Elizarov](https://medium.com/@elizarov/deadlocks-in-non-hierarchical-csp-e5910d137cc) on how to avoid deadlocks in practical coroutines. (Thanks to [Johannes Jensen](https://github.com/spand) for the suggestion.)
 
 Our code sample above works, but it's still dangerous. If one function gets locked or indefinitely suspended for any reason, you end up in a deadlock. Ideally you want to avoid launching a coroutine or entering a suspend function until the conditions are ideal to do so. If you cannot stop a coroutine from being launched when it's not ready, you can at least queue up several suspend functions using the `Mutex` class.
 
