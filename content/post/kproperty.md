@@ -2,8 +2,8 @@
 title: "Getting arbitrary properties from unknown classes with KProperty"
 author: "Jacques Smuts"
 cover: "/images/generic_interfaces3.png"
-tags: ["android", "kotlin", "kproperty", "reflection"]
-date: 2019-07-20T20:29:26+02:00
+tags: ["android", "kotlin", "kproperty", "kproperty1", "reflection"]
+date: 2019-08-01T20:29:26+02:00
 draft: false
 ---
 
@@ -174,7 +174,7 @@ fun main (args: Array<String>) {
     println("${film.name} has a happy ending? $hasHappyEnding")
 }
 
-inline fun <T, reified Interface> getAttribute(input: Film, property: KProperty1<Interface, *>): T? {
+inline fun <T, reified Interface> getAttribute(input: Film, property: KProperty1<Interface, T>): T? {
     if (input is Interface) {
         return property.get(input) as? T
     }
@@ -185,6 +185,10 @@ inline fun <T, reified Interface> getAttribute(input: Film, property: KProperty1
 
 
 Now you can just pass in your `Interface::Property` reference and you'll know that the right property type will be accessed, that the property is definitely linked to the right interface, and that any future name changes will not result in breaking changes without the IDE telling you.
+
+#### To explain the function:
+
+KProperty1 takes as Generic input the interface or class to which it belongs, as well as the required output (`T`). In our case we allow any output, but it must be a property of the given `<Interface>`. In short, we can theoretically get *any attribute* from a given class with casting, but that isn't safe. Instead we use this function, and with the `<Interface, T>` we pass in, it is still typesafe and reliable.
 
 This looks pretty great so far. If you want to keep going you can turn the getAttribute into an Extension Function or infix function on the Film class. Maybe you find this to be a bit more readable:
 
@@ -227,11 +231,11 @@ fun main (args: Array<String>) {
     println("${film.name} has a happy ending? $hasHappyEnding")
 }
 
-inline fun <T, reified Interface>Film.getAttribute(property: KProperty1<Interface, *>): T? {
+inline fun <T, reified Interface>Film.getAttribute(property: KProperty1<Interface, T>): T? {
     return getFilmAttribute(this, property)
 }
 
-inline fun <T, reified Interface> getFilmAttribute(input: Film, property: KProperty1<Interface, *>): T? {
+inline fun <T, reified Interface> getFilmAttribute(input: Film, property: KProperty1<Interface, T>): T? {
     if (input is Interface) {
         return property.get(input) as? T
     }
@@ -286,6 +290,9 @@ fun main (args: Array<String>) {
 
     val normalTime = measureTimeMillis(::normalDirectAccessTime)
     println("It takes $normalTime milliseconds to do $iterations direct property access operations")
+
+    val manualCastingTime = measureTimeMillis(::manualCastingAccessTime)
+    println("It takes $manualCastingTime milliseconds to do $iterations manual casting property access operations")
     
     val reflectionTime = measureTimeMillis(::reflectionAccessTime)
     println("It takes $reflectionTime milliseconds to do $iterations reflected property access operations")
@@ -300,6 +307,22 @@ fun normalDirectAccessTime() {
     repeat(iterations) {
         film.happyEnding
     }
+}
+
+fun manualCastingAccessTime() {
+	val film = YoungAdultFilm("The End of Evangelion", 869342400, 85, 20, "Instrumentality", 1, true)
+
+    repeat(iterations) {
+        getHappyEnding(film)
+    }
+}
+
+fun getHappyEnding(film: Film): Boolean {
+	return if (film is Romance) {
+		film.happyEnding
+	} else {
+		false
+	}
 }
 
 
@@ -321,16 +344,14 @@ inline fun <T, reified Interface> getAttribute(input: Film, property: KProperty1
 
 {{< /kotlin >}}
 
-In my case, the reflected property access operation takes on average about 2.5 times longer than the direct access.
+In my case, the reflected property access operation takes on average about 2.5 times longer than the direct access. And the manual casting takes just a smidgeon longer than the normal direct access.
 
-That's actually pretty impressive. I was expecting more than 90% decrease in performance, instead it's only about 60%. Not ideal if you care about optimizing for billions of operations per second, but acceptable for less intense usecases.
+That's actually pretty impressive. I was expecting more than 90% decrease in performance for reflection; instead it's only about 60%. This is not ideal if you care about optimizing for billions of operations per second, but acceptable for less intense usecases, such as in user(Android) applications that cater for a single user at a time.
 
 ### Conclusion
 
-- Reflection is great
-- Generics are amazing
-- Kotlin Generics + Reflection + Type Inference is mindblowing
+KProperty is an essential class for doing higher-order programming in Kotlin. You can use it to get further information about any given property, or you can use it to obtain properties that you don't normally have access to, as demonstrated above.
 
-If you can get your mind around higher-order functions, generics, and reflection, you will become way more efficient as a developer. I hope this shows an example why.
+
 
 
