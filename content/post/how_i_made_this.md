@@ -58,21 +58,21 @@ Which you'll notice is incorrectly styled with red thanks to the single-quote st
 
 ### Git Gist
 
-{{% gist "JacquesSmuts" "217c77ec0e4d8ec8409ae45c3516ec07" %}}
+{{< gist "JacquesSmuts" "217c77ec0e4d8ec8409ae45c3516ec07" >}}
 
 ### Image with zooming and title
 
-{{% figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." width="40%" class="zoomable" %}}
+{{< figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." width="40%" class="zoomable" >}}
 
 ### Video
 
-{{% video
-  "/videos/how_i_made_this3.mp4" %}}
+{{< video
+  "/videos/how_i_made_this3.mp4" >}}
 
 ### Embedded Youtube
 
-{{% youtube "TdO8hR2QAUs" %}}
+{{< youtube "TdO8hR2QAUs" >}}
 
 ### Linking to another post
 
-[References]({{% ref "/post/references" %}})
+[References]({{< ref "/post/references" >}})

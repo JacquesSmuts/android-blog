@@ -130,7 +130,7 @@ This all becomes rather tedious. So maybe we should rather write out something G
 
 Yes. We can iterate through the properties and find the one which matches a name we specify. This is not an ideal solution because we have to pass in a string. Not very typesafe. And if any variable name changes, that string will no longer match.
 
-However, with Kotlin's `inline` and `reified` keywords, we can do amazing generic work. First you have to have the Kotlin Reflection Library, (as described in my [previous article on Reflection]({{% ref "/post/generic_interface_and_methods" %}})).
+However, with Kotlin's `inline` and `reified` keywords, we can do amazing generic work. First you have to have the Kotlin Reflection Library, (as described in my [previous article on Reflection]({{< ref "/post/generic_interface_and_methods" >}})).
 
 Then you have to read about [Reflection and KProperty<>](https://kotlinlang.org/docs/tutorials/kotlin-for-py/member-references-and-reflection.html) and that if you can get access to a property, you can obtain the value of that property by using `kproperty.get(instance)`.
 

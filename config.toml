@@ -7,10 +7,9 @@ googleAnalytics = "UA-139178159-1"
 disqusShortname = "jacquessmuts"
 
 PygmentsCodeFences = true
-PygmentsStyle = "friendly"
+canonifyurls = true
 
 copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce."
-
 
 [[menu.main]]
   name = "Home"

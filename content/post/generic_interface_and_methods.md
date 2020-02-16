@@ -18,11 +18,11 @@ I couldn't think of a simpler scenario to demonstrate KFunction and KSuspendFunc
 
 Let's assume you have several different endpoints and you need to differentiate between them easily, even though they can change dynamically. If you're an Android developer, you're probably used to Retrofit and its associated Interfaces. You have several classes that look like this:
 
-{{% gist "JacquesSmuts" "8374926ea79785b96aec53714d1dd44e" %}}
+{{< gist "JacquesSmuts" "8374926ea79785b96aec53714d1dd44e" >}}
 
 Each of these interfaces are used by RetroFit to generate the right api call you can call. And then you have a few classes which may or may not implement these interfaces. So if you have a list of unknown services and you want to get the AWS Repos, you have to iterate through your services, find the AwsService and then make the call. You can do something like this:
 
-{{% gist "JacquesSmuts" "142f78c848c784119ca76bdc151ea01f" %}}
+{{< gist "JacquesSmuts" "142f78c848c784119ca76bdc151ea01f" >}}
 
 But this means that every single time you want to check your GitHubRepos, your AwsRepos, or any other api call, you have to manually write out this entire process from scratch. That's highly inefficient and boilerplatey. Can't you push them all through some central function?
 
@@ -43,15 +43,15 @@ doAwsApiCall(services, AwsCodeCommitService::listAwsRepos)
 
 But that function doesn't exist yet, so just ask IntelliJ/Android Studio to create it for you. (We're doing this because the IDE is smarter than us at figuring out the input parameters.)
 
-{{% figure src="/images/generic_interfaces1.png" alt="compiler error" title="If you see this warning, you're headed in the right direction. " width="50%"  class="zoomable" %}}
+{{< figure src="/images/generic_interfaces1.png" alt="compiler error" title="If you see this warning, you're headed in the right direction. " width="50%"  class="zoomable" >}}
 
 And you'll get something like this:
 
-{{% gist "JacquesSmuts" "10a7bab01fe4e8292b307955beac2da6" %}}
+{{< gist "JacquesSmuts" "10a7bab01fe4e8292b307955beac2da6" >}}
 
 So the `KFunction1` here is reference to a specific function that can be called. To make a class run that function, you just have to pass the calling class into the function. Yes, that's hard to understand and a little bit backwards, but maybe it makes more sense in code.
 
-{{% gist "JacquesSmuts" "53d6fb84c6ac3eebb6dde3d830bca61b" %}}
+{{< gist "JacquesSmuts" "53d6fb84c6ac3eebb6dde3d830bca61b" >}}
 
 This is almost the same as our first implementation, except for the commented part. What this means is that we can pass in any function from the `AwsCodeCommitService` interface, and it will automatically be called inside the `doAwsApiCall` function.
 
@@ -65,7 +65,7 @@ Yes, with Reflection and Generics you can!
 
 So, using the great explanation into inline functions and reified Generics in [this great guide on Medium](https://medium.com/kotlin-thursdays/introduction-to-kotlin-generics-reified-generic-parameters-7643f53ba513) as a basis, I'm going to just turn everything into a Generic and see what happens.
 
-{{% gist "JacquesSmuts" "087ee57e4afca3fde8112c3b37dcbf4e" %}}
+{{< gist "JacquesSmuts" "087ee57e4afca3fde8112c3b37dcbf4e" >}}
 
 All I did was 
 
@@ -77,7 +77,7 @@ And it works and accepts literally any `interface::method` pair which returns th
 
 However...
 
-{{% figure src="/images/generic_interfaces2.png" alt="compiler error" title="If you see this warning, you're headed in the right direction. " width="90%"  class="zoomable" %}}
+{{< figure src="/images/generic_interfaces2.png" alt="compiler error" title="If you see this warning, you're headed in the right direction. " width="90%"  class="zoomable" >}}
 
 The `GitHubRepos` api call takes a username as an input parameter. So now the IDE is telling you that `listGitHubRepos(username)` is a KFunction2. What's that? 
 
@@ -86,7 +86,7 @@ The `GitHubRepos` api call takes a username as an input parameter. So now the ID
 
 So let's create another `doApiCall()`, except that it takes kFunction2 as an input.
 
-{{% gist "JacquesSmuts" "499cab2b907298bc03de8d02d19c22c0" %}}
+{{< gist "JacquesSmuts" "499cab2b907298bc03de8d02d19c22c0" >}}
 
 And this function works. All we had to do was add the `Input` Type as a Generic type, and pass the `input` into the `KFunction2`. This means in other words that we can pass in a list of unknown classes, a function and an input. If any class in that list of unknown classes is the correct type, the right function will be called on that class. 
 
@@ -97,7 +97,7 @@ The best part is that because of Kotlin's intensely awesome type inference, I ne
 
 You may have noticed that little suspend function back in the beginning. I didn't forget about it. It's handled identically, but you have to create a new function for it unfortunately. Something like this:
 
-{{% gist "JacquesSmuts" "96af861d1096ed8feb8c299d19a623b0" %}}
+{{< gist "JacquesSmuts" "96af861d1096ed8feb8c299d19a623b0" >}}
 
 As you can see, all I did was replace KFunction1 and KFunction2 with KSuspendFunction1 and KSuspendFunction2, respectively. The reason for this is because the signature for a suspend function and normal function in Kotlin are not the same. Hopefully if you're using suspend functions you already know this though.
 
@@ -114,6 +114,6 @@ If you can get your mind around higher-order functions, generics, and reflection
 
 #### Follow-Up and Thanks
 
-I wrote a [follow-up article]({{% ref "/post/kfunction_analogues" %}}) based on some nice feedback I got.
+I wrote a [follow-up article]({{< ref "/post/kfunction_analogues" >}}) based on some nice feedback I got.
 
 I'd also like to thank my colleague, [Jannie](https://twitter.com/pantsula) at Flat Circle for coming up with this problem for me to solve.

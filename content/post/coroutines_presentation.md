@@ -11,4 +11,4 @@ A video presentation on coroutines, a talk I gave at GDG Cape Town
 
 <!--more-->
 
-{{% youtube "qaiO1BHIsgo" %}}
+{{< youtube "qaiO1BHIsgo" >}}

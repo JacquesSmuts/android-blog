@@ -35,7 +35,7 @@ I followed [this guide](https://medium.com/@anujguptawork/how-to-create-your-own
 
 I followed [this guide](https://medium.com/@anitaa_1990/6-easy-steps-to-upload-your-android-library-to-bintray-jcenter-59e6030c8890), and created my account on bintray as instructed there. However I save my BINTRAY_KEY api key in my CircleCI setup, and access it from the gradle setup for bintray-release, like so:
 
-{{% gist "JacquesSmuts" "a004eec630f299bfa01bb63aabf00474" %}}
+{{< gist "JacquesSmuts" "a004eec630f299bfa01bb63aabf00474" >}}
 
 #### 5. Add the project to [CircleCI](https://circleci.com)
 
@@ -43,7 +43,7 @@ For my CircleCI config.yml file, I literally just copy-paste [the same file](htt
 
 Also remember to add the environment variable `BINTRAY_KEY` to your CircleCI settings, like so:
 
-{{% figure src="/images/library_template1.png" alt="CircleCI" title="Use your own Bintray API key, from Bintray User settings." width="80%" class="zoomable" %}}
+{{< figure src="/images/library_template1.png" alt="CircleCI" title="Use your own Bintray API key, from Bintray User settings." width="80%" class="zoomable" >}}
 
 You may also want to set up CircleCI to build only on pull requests. But don't worry, this config won't deploy without your say-so.
 
@@ -51,7 +51,7 @@ You may also want to set up CircleCI to build only on pull requests. But don't w
 
 Commit to master and make sure CircleCI builds your project. If you copied my CircleCI config file, you should see a workflow that looks like this:
 
-{{% figure src="/images/library_template2.png" alt="CircleCI" title="Hodl" width="80%" class="zoomable" %}}
+{{< figure src="/images/library_template2.png" alt="CircleCI" title="Hodl" width="80%" class="zoomable" >}}
 
 Click the "Hold" button and approve the build. If you do, it will deploy to Bintray. If you get any errors, CircleCI should have logs which explain the issue so you can resolve it from there.
 

@@ -11,7 +11,7 @@ KFunction can be written in more than one way. Here's a list of analogues, plus 
 
 <!--more-->
 
-After my [previous article on Reflection]({{% ref "/post/generic_interface_and_methods" %}}) was posted, I got a great comment from @pacoworks:
+After my [previous article on Reflection]({{< ref "/post/generic_interface_and_methods" >}}) was posted, I got a great comment from @pacoworks:
 
 {{< tweet 1126057942724296704 >}}
 
@@ -21,7 +21,7 @@ Turns out I was wrong; KSuspendFunction can be shortened. (click that thread to 
 
 So, in order to help me remember the different ways to reference higher-order functions, I made this grid. It omits the list of passed interfaces for brevity.
 
-{{% gist "JacquesSmuts" "f43755a820658b19f6c5fdd4fdb14eb4" %}}
+{{< gist "JacquesSmuts" "f43755a820658b19f6c5fdd4fdb14eb4" >}}
 
 | KFunction  | Analogue | ReceiverFunction |
 | ------------- | ------------- | ------------- |
@@ -39,7 +39,7 @@ I like the way ReceiverFunction is composed and I would like to use that, howeve
 
 The other thing to note is that if you use the ReceiverFunction notation and pass the wrong type of function, the IDE will always default to referring to the passed function argument as "KFunction".
 
-{{% figure src="/images/kfunction_analogues2.png" alt="compiler error" title="I didn't call it a KSuspendFunction, but the IDE does. " width="90%"  class="zoomable" %}}
+{{< figure src="/images/kfunction_analogues2.png" alt="compiler error" title="I didn't call it a KSuspendFunction, but the IDE does. " width="90%"  class="zoomable" >}}
 
 Which means the developer is likely to think that they are passing something entirely different than the required input, unless they know both the KFunction notation and the Receiver Function notation.
 
