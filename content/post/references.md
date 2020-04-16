@@ -11,6 +11,10 @@ A list of achievements that are publicly presented
 
 ### List of appearances and references, from new to old
 
+*2019-11-30*: Co-organised and ran [DevFest South Africa](https://devfest.co.za/)
+
+*2019-08-30*: Became head of [GDG Cape Town](https://www.meetup.com/Google-Developer-Group-Cape-Town-Meetup/)
+
 *2019-07-25*: Spoke at [JavaConf 2019](http://j-sa.co/speaker/jacques-smuts/) about Coroutines and RxJava with Pamela Hill. Promoted said talk with [a funny tweet](https://twitter.com/JacquesSmuts/status/1154769025517477888). Yes, tweets are legitimate references please @ me.
 
 *2019-05-26*: Callback Hell Article featured in [Kotlin Weekly 147](https://mailchi.mp/kotlinweekly/kotlin-weekly-147) and [Android Weekly 363](https://androidweekly.net/issues/issue-363)
