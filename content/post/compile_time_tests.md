@@ -1,5 +1,5 @@
 ---
-title: "Architecting to Fail Faster in Kotlin: The Pyramid"
+title: "The Testing Pyramid Has a Deeper Foundation"
 author: "Jacques Smuts"
 cover: "/images/compile_test1.png"
 tags: ["Kotlin", "Testing", "TDD", "Testing Pyramid", "Android", "Margaret Hamilton", "Architecture"]
@@ -20,7 +20,7 @@ You probably know the testing pyramid. Unit tests run faster and are easier to d
 
 If you're wondering what Compile Time tests mean, I mean everything that runs during and even before compilation, to provide "Compile Time Safety": Static Analysis, Syntax Errors, Linting, Generated Classes, (Gradle) Build Tool Tasks and anything else I might be forgetting. Compile time tests refers to any errors you get that prevent your unit-tests from running in the first place.
 
-I'm sure I'm not the first one to propose this. I looked around and found [a few](https://twitter.com/aarondjents/status/805913874704674816) other [similar ideas](https://twitter.com/mrjedmao/status/1085750574996312064), but only really in the JavaScript community. My guess is that since they cannot rely on the compiler by default, they consider the addition of static tests to be part of the testing framework. They don't take the concept of static verification for granted the way Java/Kotlin developers do.
+I'm sure I'm not the first one to propose this. I looked around and found [a few](https://twitter.com/aarondjents/status/805913874704674816) other [similar ideas](https://twitter.com/mrjedmao/status/1085750574996312064), but only really in the JavaScript community. My guess is that since they cannot rely on the compiler by default, they consider the addition of static tests to be part of the testing framework. Java/Kotlin developers, on the other hand, consider type safety to be an assumed but separate step from the testing framework.
 
 ## Fail Fast Verification
 
@@ -29,7 +29,7 @@ Leaving the pyramid aside, I knew that the concept had to be much older than 201
 2. Statically
 3. Dynamically
 
-The static verification at the time was extremely limited, so they had to build a lot of it themselves. Margaret Hamilton took "fail fast" to its logical conclusion and did everything in her power to pick up problems before they became problems. She also designed and implemented end-to-end testing systems, but preferred to have the majority of the validation be done before the end-to-end tests ran. Furthermore, her analyses concluded that bugs are less likely to occur if you have modular systems, as well as extensive documentation, specifications and conceptual planning in place before coding starts.
+The static verification at the time was extremely limited, so they had to build a lot of it themselves. Margaret Hamilton took "fail fast" to its logical conclusion and did everything in her power to pick up problems before they became problems; first in planning, then in code. She also designed and implemented end-to-end testing systems, but preferred to have the majority of the validation be done before the end-to-end tests ran. Furthermore, her analyses concluded that bugs are less likely to occur if you have modular systems, as well as extensive documentation, specifications and conceptual planning in place before coding starts.
 
 So with that background in place, let's get back to the four-layered testing pyramid.
 
@@ -52,35 +52,38 @@ But I see this as the first failing test:
 
 {{< figure src="/images/compile_test2.png" alt="static test" title="First Failing Test" width="70%"  class="zoomable" >}}
 
-This seems like a dumb distinction to make, but when you change the number or type of arguments for the `convertStringToInt` function, your tests don't fail; the compilation fails first.
+This seems like a dumb distinction to make, but I believe it to be important. If you change the type of input or the number of arguments for the `convertStringToInt` function, your tests don't fail; the compilation fails before your tests can even run. Which means the input-type and input-amount test is performed automatically, but that it is still a verification step that fails properly.
 
 
 ## The Implications On Your Architecture
 
 Not everyone uses TDD, but everyone should architect their Android projects in such a way that it is easy to unit-test. By going down this route you will hopefully start to implement some of the popular and sensible choices:
  - Modularization
- - Inversion of Control via [Dependency Injection / Service Locator](https://www.martinfowler.com/articles/injection.html)
+ - Inversion of Control via [Dependency Injection](https://www.martinfowler.com/articles/injection.html)
  - Decoupling Classes / Dependencies
  - [Functional Reactive Programming](https://old.reddit.com/r/androiddev/comments/9ifv54/are_kotlin_coroutines_really_going_to_replace/)
+ - Pretty much everything written in [Refactoring by Fowler](https://www.goodreads.com/book/show/44936.Refactoring)
 
  And various other small techniques that you develop subconsciously as you prioritise around testability.
 
- However, what if you prioritise your architecture to go beyond failing fast in unit tests? What if you prioritise things to fail fast like in the 4-layered test-pyramid above? Breaking changes should ideally fail at compile-time. For me, as an Android Developer, this is the ideal. My compile-time is often around a full minute and I'd prefer if breaking changes broke things before I even run my tests.
+ However, what if you prioritise your architecture to go beyond failing fast in unit tests? What if you prioritise things to fail fast like in the 4-layered test-pyramid above? Breaking changes should ideally fail at compile-time. For me, as an Android Developer, this is the ideal. My compile-time is often around a full minute and I'd prefer if breaking changes alerted me before I even have to do a full compile, much less run tests.
 
 A simple example would be if my `convertStringToInt` function required an additional argument. I'd get this error:
 
 {{< figure src="/images/compile_test4.png" alt="what a terrible function I should just use the standard library for this" title="Perfect test: it failed before it even ran" width="70%"  class="zoomable" >}}
 
+If you want to pick up breaking changes faster, your goal is to **structure your code in a way where breaking changes more often cause compile time errors before they cause test failures.**
 
-## "Okay, cool. So give me some practical examples"
+## "Okay, cool. Compilation errors are sometimes better than test failures. So give me some practical examples"
 
 This was the theoretical portion. In the follow-ups to this post, I'll give some practical examples, which may include:
 
+- [Adding static analysis tools, like Detekt]({{< ref "/post/compile_time_tests" >}})
 - [Using named arguments]({{< ref "/post/compile_time_tests2" >}})
 - [Using custom lint-tests]({{< ref "/post/compile_time_tests3" >}})
 - [Using `when` with enums/sealed classes]({{< ref "/post/compile_time_tests4" >}})
 - [\<`reified Type`\> Generics instead of <\*>]({{< ref "/post/compile_time_tests5" >}}) (https://www.zacsweers.dev/api-design-case-studies-intersection-types/)
 - [Labels for `this` and scope]({{< ref "/post/compile_time_tests6" >}})
+- [Using libraries that generate interfaces]({{< ref "/post/compile_time_tests7" >}}) (View Binding, NavigationSafeArgs, Dagger, Apollo)
 - [Using coroutines for asynchronous operations]({{< ref "/post/compile_time_tests" >}})
-- [Using libraries that generate interfaces]({{< ref "/post/compile_time_tests" >}}) (View Binding, NavigationSafeArgs, Dagger, Apollo)
 - [Using Kotlin Gradle DSL]({{< ref "/post/compile_time_tests" >}})

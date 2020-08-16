@@ -1,14 +1,13 @@
 ---
-title: "Architecting to Fail Faster in Kotlin: Named Arguments"
+title: "Always Use Named Arguments in Kotlin"
 author: "Jacques Smuts"
 cover: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Named Parameters", "Architecture"]
 date: 2020-03-07T11:33:09+02:00
 draft: true
 ---
-
 Using named arguments in Kotlin causes breaking changes to be caught faster. This article shows you how.
-
+https://twitter.com/kotlin/status/1276083456854941697?s=20
 <!--more-->
 
 This article is a follow-up on [Part 1 in this series,]({{< ref "/post/compile_time_tests" >}}) wherein I explain why the test pyramid is incomplete, and that you should architect so that breaking changes gets caught at compile-time if possible.
@@ -21,7 +20,11 @@ When you pass an argument to a function or parameter, you can name the argument 
 
 fun main() {
 //sampleStart
-  data class User(val name: String, val surname: String, val age: Int = 0)
+  data class User(
+    val name: String,
+    val surname: String,
+    val age: Int = 0
+  )
 
   // This is how you would normally pass arguments. Name, Surname, Age.
   val userNormal = User(
@@ -55,7 +58,12 @@ fun main() {
 //sampleStart
 
   // Added `height`
-  data class User(val name: String, val surname: String, val height: Int, val age: Int? = null)
+  data class User(
+    val name: String,
+    val surname: String,
+    val height: Int, // height added here.
+    val age: Int? = null
+  )
 
   val userNormal = User(
       "Kim",
@@ -77,22 +85,24 @@ fun main() {
 
 If you run the above code, you'll get a compiler error. Note that the error appears (correctly) for the `userNamed` variable, but not for `userNormal`. Now `Kim Katsuragi` has a height of 43 and an age of null.
 
- This might seem like a contrived example, because "everybody knows that you should put new variables at the end". I disagree with that notion, because it places the burden of knowledge on future unknown developers or circumstances. It's often that developers feel the need to change the order of arguments or variables. They usually don't, for fear of breaking things. With named arguments, that would not be a problem.
+ This might seem like a contrived example, because "everybody knows that you should put new variables at the end". I disagree with that notion, because it places the burden of knowledge on future unknown developers or circumstances. It's often that developers feel the need to change the order of arguments or variables. They usually don't, for fear of breaking things. However if you always use named arguments, the order of constructor inputs would not be a factor, and refactoring your constructor would carry less risk.
 
  I've run into various scenarios where I've had to change the arguments on a function/constructer where I had to manually go through every single instance where the function was called to make sure it was still being called correctly despite the change. Furthermore, I don't know what unit-test can be written to ensure that all instances of a constructor is being called correctly. However when I switched to named arguments, I knew that the calling code would always keep working if no change was required, and throw a compiler error if a change was required.
 
-**Named arguments catches breaking changes immediately**, in a way which would be slower with unit-tests.
+**Named arguments catches breaking changes from incorrect arguments immediately**, in a way which would be slower with unit-tests.
 
 However this only works if you use named arguments everywhere. It's not forced.
 
 
-## Named Arguments sounds sensible. Can I enforce it?
+## Named Arguments Sounds Great. Can I Force Their Use?
 
-Yes, with [this hacky workaround](https://stackoverflow.com/questions/37394266/how-can-i-force-calls-to-some-constructors-functions-to-use-named-arguments) that is as clever as it is unpleasant to implement.
+Some people would propose [this hacky workaround](https://stackoverflow.com/questions/37394266/how-can-i-force-calls-to-some-constructors-functions-to-use-named-arguments) that is as clever as it is unpleasant to implement. Don't do this.
 
 Or you can add a lint check to your project which forces you to use named arguments.
 
-I've written [this little library](https://github.com/JacquesSmuts/NamedArgsLint/blob/master/README.md) which does it for you. I'm still playing around with it, but the basic premise works for simple cases.
+I've written [this little library](https://github.com/JacquesSmuts/NamedArgsLint/blob/master/README.md) which does it for you. It forces all functions or constructors with more than two arguments to require named arguments, otherwise it tags it as an error.
+
+Regardless of lint libraries, you should use [this IntelliJ plugin](https://plugins.jetbrains.com/plugin/10942-kotlin-fill-class) to easily fill arguments or add names to arguments. I use it all of the time.
 
 ## Conclusion
 

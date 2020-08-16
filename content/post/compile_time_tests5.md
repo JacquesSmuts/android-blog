@@ -1,5 +1,5 @@
 ---
-title: "Architecting to Fail Faster in Kotlin: Reified Types"
+title: "Architecting to Fail Faster: Reified Types"
 author: "Jacques Smuts"
 cover: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Generic", "Reified Type"]
@@ -21,7 +21,7 @@ As explained in the [kotlin documentation on it](https://kotlinlang.org/docs/ref
 
 Having access to the class type of a Generic input at compile-time means that you can make your code type safe and ensure that breaking changes to your code structure will result in compile-time errors.
 
-I consider this to be one of the many reasons why Kotlin is the best programming language. I've written about how it can solve [certain problems in a typesafe way]({{< ref "/post/generic_interface_and_methods" >}}) before, but let me just give a simpler example, given the context of this series on Architecting to fail faster.
+I consider this to be one of the many reasons why Kotlin is the best programming language, even though I have very limited experience in languages other than C# and Java. I've written about how Kotlin can solve [certain problems in a typesafe way]({{< ref "/post/generic_interface_and_methods" >}}) before, but let me just give a simpler example, given the context of this series on Architecting to fail faster.
 
 ## Before Generics
 
@@ -76,7 +76,7 @@ This is a step in the right direction, but we want to reach the bottom level of 
 
 {{< figure src="/images/compile_test1.png" alt="Illuminati confirmed" title="Testing Pyramid+" width="20%"  class="zoomable" >}}
 
-## With Generics With Reified Types
+## With Generics And Reified Types
 
 With reified types, we can check which class is requested in the return type, via T::class.java.
 
@@ -88,7 +88,7 @@ data class User(val name: String)
 inline fun <reified T> interpretStringBetter(input: String): T {
 
     return when {
-        T::class.java == User::class.java && input.startsWith("name=") -> User(input.substring(5)) as T //Guaranteed to pass
+        T::class.java == User::class.java && input.startsWith("name=") -> User(input.substring(5)) as T //Guaranteed to cast successfully
         else -> throw IllegalArgumentException("This input is not supported: $input")
     }
 }
