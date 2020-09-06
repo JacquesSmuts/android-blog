@@ -7,7 +7,6 @@ date: 2020-03-07T11:33:09+02:00
 draft: true
 ---
 Using named arguments in Kotlin causes breaking changes to be caught faster. This article shows you how.
-https://twitter.com/kotlin/status/1276083456854941697?s=20
 <!--more-->
 
 This article is a follow-up on [Part 1 in this series,]({{< ref "/post/compile_time_tests" >}}) wherein I explain why the test pyramid is incomplete, and that you should architect so that breaking changes gets caught at compile-time if possible.
