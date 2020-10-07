@@ -3,8 +3,8 @@ title: "The Testing Pyramid Has a Deeper Foundation"
 author: "Jacques Smuts"
 cover: "/images/compile_test1.png"
 tags: ["Kotlin", "Testing", "TDD", "Testing Pyramid", "Android", "Margaret Hamilton", "Architecture"]
-date: 2020-03-04T20:48:01+02:00
-draft: true
+date: 2020-10-07T02:48:01+02:00
+draft: false
 ---
 
 Kotlin allows us to structure our code around compile-time tests. This post explains how.
@@ -77,13 +77,14 @@ If you want to pick up breaking changes faster, your goal is to **structure your
 ## "Okay, cool. Compilation errors are sometimes better than test failures. So give me some practical examples"
 
 This was the theoretical portion. In the follow-ups to this post, I'll give some practical examples, which may include:
+This was the theoretical portion. In the follow-ups to this post, I'll give some practical examples, which may include:
 
-- [Adding static analysis tools, like Detekt]({{< ref "/post/compile_time_tests" >}})
-- [Using named arguments]({{< ref "/post/compile_time_tests2" >}})
-- [Using custom lint-tests]({{< ref "/post/compile_time_tests3" >}})
-- [Using `when` with enums/sealed classes]({{< ref "/post/compile_time_tests4" >}})
-- [\<`reified Type`\> Generics instead of <\*>]({{< ref "/post/compile_time_tests5" >}}) (https://www.zacsweers.dev/api-design-case-studies-intersection-types/)
-- [Labels for `this` and scope]({{< ref "/post/compile_time_tests6" >}})
-- [Using libraries that generate interfaces]({{< ref "/post/compile_time_tests7" >}}) (View Binding, NavigationSafeArgs, Dagger, Apollo)
-- [Using coroutines for asynchronous operations]({{< ref "/post/compile_time_tests" >}})
-- [Using Kotlin Gradle DSL]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Using named arguments]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Using custom lint-tests]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Using `when` with enums/sealed classes]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [\<`reified Type`\> Generics instead of <\*>]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Labels for `this` and scope]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Using libraries that generate interfaces]({{< ref "/post/compile_time_tests" >}}) (View Binding, NavigationSafeArgs, Dagger, Apollo)
+- //TODO: [Using coroutines for asynchronous operations]({{< ref "/post/compile_time_tests" >}})
+- //TODO: [Using Kotlin Gradle DSL]({{< ref "/post/compile_time_tests" >}})
+- //TODO:  [Adding static analysis tools, like Detekt]({{< ref "/post/compile_time_tests" >}})

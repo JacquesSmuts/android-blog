@@ -9,6 +9,8 @@ draft: true
 
 Using the reified Generic type in Kotlin, your code can be much safer.
 
+https://www.zacsweers.dev/api-design-case-studies-intersection-types/
+
 <!--more-->
 
 This article is Part 5 in the [series on making your code compile-time safer]({{< ref "/post/compile_time_tests" >}}).
