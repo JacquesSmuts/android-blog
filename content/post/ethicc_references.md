@@ -38,6 +38,8 @@ There are many many many organisations and it's difficult to find comparative in
 
 [Game Workers Unite](https://www.gameworkersunite.org/)
 
+[The ICTU](http://ictu.org.za/) - (South Africa)
+
 [IEEE Computer Society](https://www.computer.org/)
 
 [The IET](https://www.theiet.org/)
