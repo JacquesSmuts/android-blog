@@ -1,15 +1,22 @@
 ---
-title: "Always Use Named Arguments in Kotlin"
+title: "Use More Named Arguments in Kotlin"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
-tags: ["Kotlin", "Android", "Named Parameters", "Architecture"]
-date: 2020-03-07T11:33:09+02:00
-draft: true
+image: "/images/compile_test_named_arg.png"
+categories:
+  - Android
+  - Compile Time Safety
+tags:
+  - named parameters
+  - architecture
+date: 2022-11-07T11:33:09+02:00
+draft: false
 ---
 Using named arguments in Kotlin causes breaking changes to be caught faster. This article shows you how.
 <!--more-->
 
-This article is a follow-up on [Part 1 in this series,]({{< ref "/post/compile_time_tests" >}}) wherein I explain why the test pyramid is incomplete, and that you should architect so that breaking changes gets caught at compile-time if possible.
+This article is a follow-up on [Part 1 in this series,]({{< ref "/post/compile_time_tests" >}}) wherein I explain why the test pyramid is incomplete, and that you should architect so that breaking changes gets caught at compile-time if possible. 
+
+Further context: I wrote this in 2020, but crashed out from pandemic-induced stress before I could finish the series. I'm now going back to finish it.
 
 ## What is a named argument?
 
@@ -93,18 +100,18 @@ If you run the above code, you'll get a compiler error. Note that the error appe
 However this only works if you use named arguments everywhere. It's not forced.
 
 
-## Named Arguments Sounds Great. Can I Force Their Use?
+## Named Arguments Sounds Great. Can I Force Their Use (a little bit)?
 
 Some people would propose [this hacky workaround](https://stackoverflow.com/questions/37394266/how-can-i-force-calls-to-some-constructors-functions-to-use-named-arguments) that is as clever as it is unpleasant to implement. Don't do this.
 
 Or you can add a lint check to your project which forces you to use named arguments.
 
-I've written [this little library](https://github.com/JacquesSmuts/NamedArgsLint/blob/master/README.md) which does it for you. It forces all functions or constructors with more than two arguments to require named arguments, otherwise it tags it as an error.
+I tried to write [this little library](https://github.com/JacquesSmuts/NamedArgsLint/blob/master/README.md) which does it for you. It forces all functions or constructors with more than two arguments to require named arguments, otherwise it tags it as an error.  Unfortunately, this library doesn't work reliably. I kept struggling with lint, and eventually gave up (see context at the start of this article).
+
+However, you can see there is some demand for it in Kotlin itself, [here](https://youtrack.jetbrains.com/issue/KT-14934), as well as in [Detekt](https://github.com/detekt/detekt/issues/3534). You can use [this library](https://github.com/chao2zhang/RequireNamedArgument) to force any one function to have NamedArguments, but you can't enforce it project-wide with specific rulesets easily.
 
 Regardless of lint libraries, you should use [this IntelliJ plugin](https://plugins.jetbrains.com/plugin/10942-kotlin-fill-class) to easily fill arguments or add names to arguments. I use it all of the time.
 
 ## Conclusion
 
-Use named arguments.
-
-Since I went to all the effort of writing a Custom Lint Check for you, next time we'll talk about [creating your own Custom Lint checks.]({{< ref "/post/compile_time_tests3" >}})
+Use named arguments. Not everywhere all the time, but use them regularly.

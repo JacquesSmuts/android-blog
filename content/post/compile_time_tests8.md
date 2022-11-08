@@ -1,9 +1,9 @@
 ---
 title: "Coroutines Are More Maintainable"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
+image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android"]
-date: 2020-06-17T10:20:03+02:00
+date: 2023-06-17T10:20:03+02:00
 draft: true
 ---
 

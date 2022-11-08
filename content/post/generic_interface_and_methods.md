@@ -1,7 +1,7 @@
 ---
 title: "Generics + Reflection + Type Inference + Reified Type = Kotlin Magic"
 author: "Jacques Smuts"
-cover: "/images/generic_interfaces3.png"
+image: "/images/generic_interfaces3.png"
 tags: ["android", "kotlin", "KFunction", "KFunction1", "KSuspendFunction", "KSuspendFunction1"]
 date: 2019-05-01T08:30:00+02:00
 <!-- publishdate: 2019-05-01T10:00:00+02:00 -->

@@ -1,7 +1,7 @@
 ---
 title: "Is your modularization making any progress?"
 author: "Jacques Smuts"
-cover: "/images/modularization3.png"
+image: "/images/modularization3.png"
 tags: ["android", "modularization", "kotlin"]
 date: 2019-04-20T21:15:17+02:00
 draft: false
@@ -17,7 +17,7 @@ If you're following one of the [great guides](https://medium.com/androiddevelope
 
 {{< figure src="/images/modularization2.png" alt="a dependency graph" title="If you click the link below, you should see something like this." width="60%" class="zoomable" >}}
 
-[Click here to see PositiviTea's dependency graph]({{< ref "/sites/dependency_positivitea_011" >}}) It's interactive and fun.
+[//]: # ([Click here to see PositiviTea's dependency graph]&#40; ref "/sites/dependency_positivitea_011"   &#41; It's interactive and fun.)
 
 This graph demonstrates a way to look for ease of refactoring with two nice examples:
 

@@ -1,7 +1,7 @@
 ---
 title: "Creating and Deploying an Android Library via CircleCI"
 author: "Jacques Smuts"
-cover: "/images/library_template3.png"
+image: "/images/library_template3.png"
 tags: ["android", "kotlin", "library", "CircleCI"]
 date: 2019-05-07T22:19:00+02:00
 draft: false

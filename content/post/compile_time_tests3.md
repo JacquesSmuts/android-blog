@@ -1,9 +1,9 @@
 ---
 title: "Custom Lint Warnings Keep Your Code Safer"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
+image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Custom Lint"]
-date: 2020-03-09T18:50:56+02:00
+date: 2023-03-09T18:50:56+02:00
 draft: true
 ---
 

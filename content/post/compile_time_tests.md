@@ -1,8 +1,15 @@
 ---
 title: "The Testing Pyramid Has a Deeper Foundation"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
-tags: ["Kotlin", "Testing", "TDD", "Testing Pyramid", "Android", "Margaret Hamilton", "Architecture"]
+image: "/images/compile_test1.png"
+categories:
+  - Android
+  - Compile Time Safety
+tags:
+  - architecture
+  - theory
+  - margaret hamilton
+  - testing
 date: 2020-10-07T02:48:01+02:00
 draft: false
 ---

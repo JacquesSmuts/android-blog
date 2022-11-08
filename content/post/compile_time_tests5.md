@@ -1,9 +1,9 @@
 ---
 title: "Architecting to Fail Faster: Reified Types"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
+image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Generic", "Reified Type"]
-date: 2020-03-30T18:07:56+02:00
+date: 2023-03-30T18:07:56+02:00
 draft: true
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: "Generated Classes Are More Maintainable"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
+image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Generic", "labelled scope"]
-date: 2020-06-15T14:59:23+02:00
+date: 2023-06-15T14:59:23+02:00
 draft: true
 ---
 

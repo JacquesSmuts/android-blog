@@ -1,8 +1,12 @@
 ---
 title: "Further Reading for Ethical Programming"
 author: "Jacques Smuts"
-cover: "/images/ethicc.png"
-tags: ["Kotlin", "Android"]
+image: "/images/ethicc.png"
+categories:
+  - Android
+  - Presentations
+tags:
+  - ethics
 date: 2020-09-06T19:51:12+02:00
 ---
 

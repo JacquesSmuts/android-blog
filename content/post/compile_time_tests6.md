@@ -1,9 +1,9 @@
 ---
 title: "Avoid `it` in Kotlin, Name Things"
 author: "Jacques Smuts"
-cover: "/images/compile_test1.png"
+image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "Generic", "labelled scope"]
-date: 2020-04-02T22:07:55+02:00
+date: 2023-04-02T22:07:55+02:00
 draft: true
 ---
 

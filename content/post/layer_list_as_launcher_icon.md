@@ -1,7 +1,7 @@
 ---
 title: "Add Overlays to Your Launcher Icon Using Layer-List"
 author: "Jacques"
-cover: "/images/layerlist3.png"
+image: "/images/layerlist3.png"
 tags: ["Android", "ic_launcher.png", "Launcher Icon", "Layer-List as launcher"]
 date: 2020-02-16T14:54:38+02:00
 draft: false
