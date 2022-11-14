@@ -1,8 +1,17 @@
 ---
-title: "Escaping Callback Hell with Generic SuspendCoroutine Infix Extension Functions"
-author: "Jacques Smuts"
-cover: "/images/callback_hell4.png"
-tags: ["android", "kotlin", "suspendCoroutine", "coroutines", "callback hell", "infix notation"]
+title: Escaping Callback Hell with Generic SuspendCoroutine Infix Extension Functions
+author: Jacques Smuts
+image: /images/callback_hell4.png
+slug: callback-hell
+categories:
+    - Kotlin 
+tags: 
+    - android
+    - kotlin
+    - suspendCoroutine
+    - coroutines
+    - callback hell
+    - infix notation
 date: 2019-05-20T23:12:36+02:00
 draft: false
 ---

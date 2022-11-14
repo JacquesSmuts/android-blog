@@ -1,7 +1,7 @@
 ---
 title: "How I Made This Website"
 author: "Jacques Smuts"
-cover: "/images/how_i_made_this1.png"
+image: "/images/how_i_made_this1.png"
 tags: ["hugo", "jacques smuts"]
 date: 2019-04-20T10:43:30+02:00
 draft: false
@@ -64,15 +64,10 @@ Which you'll notice is incorrectly styled with red thanks to the single-quote st
 
 {{< figure src="/images/how_i_made_this2.png" alt="This is my face" title="Obviously, this is my face. Click to zoom." width="40%" class="zoomable" >}}
 
-### Video
-
-{{< video
-  "/videos/how_i_made_this3.mp4" >}}
-
 ### Embedded Youtube
 
 {{< youtube "TdO8hR2QAUs" >}}
 
 ### Linking to another post
 
-[References]({{< ref "/post/references" >}})
+[References]({{< ref "/post/kproperty" >}})

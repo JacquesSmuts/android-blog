@@ -1,7 +1,7 @@
 ---
 title: "Using the synchronized keyword in coroutines?"
 author: "Jacques Smuts"
-cover: "/images/coroutine_sync_mutex.png"
+image: "/images/coroutine_sync_mutex.png"
 tags: ["kotlin", "coroutines", "suspend", "mutex", "synchronized", "critical section"]
 date: 2019-06-02T09:08:10+02:00
 draft: false

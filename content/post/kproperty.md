@@ -1,25 +1,24 @@
 ---
 title: "Getting arbitrary properties from unknown classes with KProperty"
 author: "Jacques Smuts"
-cover: "/images/generic_interfaces3.png"
+image: "/images/generic_interfaces3.png"
 tags: ["android", "kotlin", "kproperty", "kproperty1", "reflection"]
 date: 2019-08-01T20:29:26+02:00
 draft: false
 ---
-
 The Kproperty class is powerful and useful. 
 
 <!--more-->
 
 ### Accessing a property, normally
 
-You have a class, maybe a `data class`, to retain info about films. Our class might look like this:
+You have a class, maybe a `data class` to retain info about films. Our class might look like this:
 
 {{< kotlin >}}
 
 fun main (args: Array<String>) {
 //sampleStart
-	[mark]data class Film(val name: String, val releaseDate: Long, val runtime: Int)[/mark]
+	data class Film(val name: String, val releaseDate: Long, val runtime: Int)
     val hereditary = Film("Hereditary", 1528401600, 127)
     println(hereditary.name)
 //sampleEnd

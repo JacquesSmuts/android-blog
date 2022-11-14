@@ -1,8 +1,12 @@
 ---
 title: "Further Reading for Ethical Programming"
 author: "Jacques Smuts"
-cover: "/images/ethicc.png"
-tags: ["Kotlin", "Android"]
+image: "/images/ethicc.png"
+categories:
+  - Android
+  - Presentations
+tags:
+  - ethics
 date: 2020-09-06T19:51:12+02:00
 ---
 
@@ -32,13 +36,21 @@ Some things that may be relevant or interesting for further reading on this topi
 
 There are many many many organisations and it's difficult to find comparative information or to know which ones to recommend for whome. These ones LOOK nice but my first-hand experience is extremely limited. This is part of the problem and I would love any further input on this topic.
 
+#### South Africa
+
+[The ITA](https://ita.org.za/)
+
+[The ICTU](http://ictu.org.za/)
+
+[The IEEE ZA](http://www.ieee.org.za/)
+
+#### Global
+
 [Algorithmic Justice League](https://www.ajl.org/)
 
 [Association of Computing Machinery](https://www.acm.org/)
 
 [Game Workers Unite](https://www.gameworkersunite.org/)
-
-[The ICTU](http://ictu.org.za/) - (South Africa)
 
 [IEEE Computer Society](https://www.computer.org/)
 

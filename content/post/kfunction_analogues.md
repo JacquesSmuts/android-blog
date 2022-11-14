@@ -1,7 +1,7 @@
 ---
 title: "The Problem with Kotlin Kfunction Receiver Functions"
 author: "Jacques Smuts"
-cover: "/images/generic_interfaces3.png"
+image: "/images/generic_interfaces3.png"
 tags: ["android", "kotlin", "KFunction", "KFunction1", "KSuspendFunction", "KSuspendFunction1", "Receiver Function"]
 date: 2019-05-08T17:54:58+02:00
 draft: false

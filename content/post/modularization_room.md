@@ -1,7 +1,7 @@
 ---
 title: "Don't Pass Around Your Room/Database Entity"
 author: "Jacques Smuts"
-cover: "/images/modularization_room1.png"
+image: "/images/modularization_room1.png"
 tags: ["Android", "Room", "Modularization", "Kotlin"]
 date: 2019-04-25T10:35:54+02:00
 publishdate: 2019-04-29T10:00:00+02:00
