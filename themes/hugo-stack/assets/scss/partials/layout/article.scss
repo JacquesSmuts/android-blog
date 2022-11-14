@@ -232,9 +232,9 @@
     blockquote {
         position: relative;
         margin: 1.5em 0;
-        border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
+        //border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
         padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
-        background-color: var(--blockquote-background-color);
+        //background-color: var(--blockquote-background-color);
 
         .cite {
             display: block;
@@ -400,12 +400,13 @@
     }
 
     /// Negative margins
-    blockquote,
+    // This was removed because I don't want the video and blockquotes and figures to stretch all the way to the end
+    //blockquote,
     figure,
     .highlight,
     pre,
     .gallery,
-    .video-wrapper,
+    //.video-wrapper,
     .table-wrapper,
     .s_video_simple {
         margin-left: calc((var(--card-padding)) * -1);

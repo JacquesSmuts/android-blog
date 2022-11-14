@@ -3,7 +3,7 @@ title: "Always use Exhaustive `when` Expressions"
 author: "Jacques Smuts"
 image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "When Expression"]
-date: 2023-03-09T18:50:56+02:00
+date: 2022-03-09T18:50:56+02:00
 draft: true
 ---
 
@@ -12,7 +12,7 @@ https://gist.github.com/AniketSK/5d7bc1b0cb379d2ed7812cb4a8603b75
 
 <!--more-->
 
-This article is a follow-up to [Part 3 in this series,]({{< ref "/post/compile_time_tests3" >}}) wherein I explain why Custom Lint Warnings are a powerful method to prevent known errors from resurfacing.
+This article is a follow-up to [Part 2 in this series,]({{< ref "/post/compile_time_tests2" >}}) wherein I explain why named arguments are a good way to pick up potentially breaking changes at compile time.
 
 ## What is the `when` Expression?
 
@@ -182,4 +182,4 @@ Yes, I also made [a library](https://github.com/JacquesSmuts/ExhaustiveWhen) for
 
 Use `when` expressions with sealed classes and make them exhaustive.
 
-In part 5 [We will have a brief look at using reified types in Kotlin]({{< ref "/post/compile_time_tests5" >}})
+In part 5 We will have a brief look at using reified types in Kotlin

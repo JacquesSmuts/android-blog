@@ -26,4 +26,4 @@ menu:
 comments: false
 ---
 
-Below are some links and references to find me and see what I'm up to.
+Below are some links and references to find me and see what I'm up to. 
