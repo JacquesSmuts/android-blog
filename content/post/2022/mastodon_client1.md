@@ -3,10 +3,11 @@ title: The Story of AndroidDev.Social's Mastodon Client
 description: This is an account of the founding of a new Mastodon Client in November 2022.
 slug: mastodon_client1
 date: 2022-11-10 00:00:00+0000
-image: 
+image:
 categories:
-  - Android
-  - Presentations
+- Android
+- Mastodon
+- KMP
 tags:
   - architecture
   - bad internet
@@ -18,30 +19,27 @@ draft: true
 
 Some guy bought Twitter, and made a lot of Decisions and Changes. This has made a lot of people very angry and been widely regarded as a bad move. As a result, many people migrated to Mastodon instances.
 
-One of them was Friendly Mike, who set up [androiddev.social](https://androiddev.social/@friendlymike) as a Mastodon instance, and is doing great work managing that, and periodically sending out invites.
+One of them was Friendly Mike, who set up [androiddev.social](https://androiddev.social/@friendlymike) as a Mastodon instance, and is doing great work managing that, periodically sending out invites, and updating everyone on the work he's doing.
 
 {{< stoot "androiddev.social" "109314476066026798" >}}
 
 His work, and the fact that so many android developers joined and supported the creation of this instance, is a wonderful story all on its own. Consider supporting the server @[donate.androiddev.social](donate.androiddev.social).
 
-However, this post (and hopefully future posts) is about my attempts to follow, understand and maybe even contribute to the incredible work done to create a new Mastodon client.
-
 On AndroidDev.social, he, and many others, asked this question:
 
 {{< stoot "androiddev.social" "109294448020649297" >}}
 
-And then Omid set up a new slack and GitHub repo for the creation of a Kotlin Multiplatform Mastodon client built by the androiddev.social groups.
+And then Omid set up a new slack and GitHub repo for the creation of a Kotlin Multiplatform Mastodon client.
 
 {{< stoot "androiddev.social" "109309107328541642" >}}
 
-There are multiple good iOS and Android apps out there for Mastodon, and for me (and I suspect many others) this isn't an attempt to dissuade people from using those apps, so much as a fun project to use as an excuse to expand our knowledge of KMP, Compose, and various related technologies.
+There are multiple good iOS and Android apps out there for Mastodon. I personally recommend [Tusky.app](https://tusky.app/). I have no idea whether this app will be better than any of the existing Mastodon apps, but for me (and I suspect others) this is more a fun project to use as an excuse to expand my knowledge of KMP, Compose, and various related technologies.
 
 # The Repo Starts
 
-
 The repo [is hosted on GitHub here.](https://github.com/AndroidDev-social/MastodonCompose)
 
-I've never been a part of big open source project from the start. I've contributed tiny bits here and there to some open source projects, usually documentation, but I'm honestly extremely intimidated by the level of skill on display in this repo, and in the slack. People with decades of experience, with existing successful projects. But, despite feeling like I don't belong amongst these experts, I'm just throwing myself in there to see if I can be helpful in any way. 
+I've never been a part of big open source project from the start. I've contributed tiny bits here and there to some open source projects, usually documentation, but I'm honestly extremely intimidated. But, despite feeling like I don't belong amongst these experts, I'm just throwing myself in there to see if I can be helpful in any way. 
 
 {{< figure src="/images/2022/mastodon1.png" alt="list of issues" title="Issued opened all within like a day. Several more were closed and moved to Discussion. " width="50%"  class="zoomable" >}}
 
@@ -95,11 +93,11 @@ I'm sure there's lots of disagreements about where to draw the line, as well as 
 
 It turns out my PR doesn't work on a Mac, since I wasn't using a Mac to build and open the PR.
 
-Coding cross platform is made doubly difficult if not everyone is using the same build tools.
+Coding cross-platform is made doubly difficult if not everyone is using the same build tools.
 
 Luckily, we're doing this together as a group, and helping each other figure out this stuff.
 
-# Psychology
+### Psychology can be an obstacle
 
 Imposter syndrome is something I continually struggle with, and it definitely reared its head during this whole exercise. More than a hundred people joined the slack for this project, to help out and/or observe. And every time there was a tricky topic, one person out of that hundred knew exactly what they were talking about and had interesting relevant things to say.
 
@@ -107,7 +105,15 @@ For me, this created the effect that the "Channel" knew so much more than I ever
 
 Further: Even assuming that everyone else is much smarter and more experienced than me still doesn't invalidate my presence. Just because I know less than the other contributors, doesn't mean that I'm not helpful towards the project goals. Everyone was being accommodating and thankful for any bit of work, and I'm starting to realize just how powerful the "culture" and contribution guidelines can be for open source projects.
 
-# Conclusion
+# The direction of the project
+
+There is a lot of [discussion](https://github.com/AndroidDev-social/MastodonCompose/discussions) about various tricky topics, including Naming, Dependency Injection, Mocking/Faking, Pagination, Navigation, Licensing and minSdk. It's a nice discussion page to look for, because there is a lot of interesting things to learn about each of those topics, as well as about how to professionally discuss and resolve differences.
+
+Some of those discussions are coming to a close now, and the architecture and overall shape of the project is solidifying. Work has begun on the first user-facing feature: the ability to log in. This seems to be one of those "go slow to go fast" projects, where things are discussed and planned, instead of the "move fast and break things" approach. I'm a big fan of proper planning and slow (democratic) discussion instead of just barging forward, so I'm enjoying this a lot.
+
+In the next post, I'll write a nice summary of the discussions, and various decisions made throughout the project.
+
+# Final Word
 
 Open Source is awesome. Working together with strangers towards a common goal is uniquely powerful. There is no way I'd learn this much from a few days at work, even though I love my job. Further, if this project works out I'll have contributed a little bit towards building something free that people use to connect with each other on an ad-free platform. That's a nice feeling.
 

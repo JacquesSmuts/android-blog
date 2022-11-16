@@ -86,7 +86,7 @@ If you want to pick up breaking changes faster, your goal is to **structure your
 This was the theoretical portion. In the follow-ups to this post, I'll give some practical examples, which may include:
 This was the theoretical portion. In the follow-ups to this post, I'll give some practical examples, which may include:
 
-- //TODO: [Using named arguments]({{< ref "/post/compile_time_tests" >}})
+- [Using named arguments]({{< ref "/post/compile_time_tests" >}})
 - //TODO: [Using custom lint-tests]({{< ref "/post/compile_time_tests" >}})
 - //TODO: [Using `when` with enums/sealed classes]({{< ref "/post/compile_time_tests" >}})
 - //TODO: [\<`reified Type`\> Generics instead of <\*>]({{< ref "/post/compile_time_tests" >}})

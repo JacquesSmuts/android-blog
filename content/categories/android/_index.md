@@ -31,3 +31,25 @@ background: "#de12e2"
 color: "#000"
 ---
 
+---
+title: KMP
+description: Posts in a series about compile time safety
+image:
+
+# Badge style
+style:
+background: "##7f52f"
+color: "#000"
+---
+
+
+---
+title: Mastodon
+description: Posts in a series about compile time safety
+image:
+
+# Badge style
+style:
+background: "##7f52f"
+color: "#000"
+---

@@ -4,6 +4,9 @@ author: "Jacques Smuts"
 image: "/images/compile_test1.png"
 tags: ["Kotlin", "Android", "When Expression"]
 date: 2022-03-09T18:50:56+02:00
+categories:
+  - Android
+  - Compile Time Safety
 draft: true
 ---
 
