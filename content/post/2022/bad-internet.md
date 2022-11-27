@@ -2,7 +2,7 @@
 title: Further Reading for Bad Internet, Old Phones
 description: This is an accompanying post for my presentation on handling Bad Internet and Old Phones
 slug: bad-internet
-date: 2022-11-23 00:00:00+0000
+date: 2022-11-21 00:00:00+0000
 image: images/bad_internet_header.png
 categories:
   - Android
@@ -13,15 +13,21 @@ tags:
   - old phones
 ---
 
-## Placeholder
+## Slides
 
-This is a placeholder for when my presentation gets published as a video.
+{{< rawhtml >}}
+<iframe src="https://slides.com/jacquessmuts/deck/embed?style=hidden" width="640" height="360" title="bob" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{{< /rawhtml >}}
 
 ## TL;DW
 
 The point of my talk is that all the best practices that apply under normal circumstances are doubly necessary under difficult circumstances, such as building for bad internet, old phones, small screens, or technically inexperienced users.
 
 There is no shortcut to learning best practices, but here are some good sources for further reading.
+
+## Bad Internet Box
+
+If you want to get your own Bad Internet Box, I suggest you contact [PJH Technologies](https://pjhtechnologies.com/).
 
 ## Google Tips
 
