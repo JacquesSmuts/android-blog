@@ -13,7 +13,14 @@ KFunction can be written in more than one way. Here's a list of analogues, plus 
 
 After my [previous article on Reflection]({{< ref "/post/generic_interface_and_methods" >}}) was posted, I got a great comment from @pacoworks:
 
-{{< tweet 1126057942724296704 >}}
+
+(Here is where a tweet was, but I disabled my account, so this is the content of my tweet)
+
+`KSuspendFunction does not support that syntax (yet?). So to build up towards understanding KSuspendFunction1, I stuck with KFunction1 and its usage.
+Normally I use your syntax, but the article was already too long to get into that :P pic.twitter.com/nUaDArDA5S
+— Jacques Smuts (@JacquesSmuts) May 8, 2019`
+
+
 
 I assumed that since the IDE told me that there was a type mismatch, that suspend functions weren't supported.
 

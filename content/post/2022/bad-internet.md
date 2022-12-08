@@ -3,7 +3,7 @@ title: Further Reading for Bad Internet, Old Phones
 description: This is an accompanying post for my presentation on handling Bad Internet and Old Phones
 slug: bad-internet
 date: 2022-11-21 00:00:00+0000
-image: images/bad_internet_header.png
+image: images/2022/bad_internet_header.png
 categories:
   - Android
   - Presentations
@@ -16,7 +16,7 @@ tags:
 ## Slides
 
 {{< rawhtml >}}
-<iframe src="https://slides.com/jacquessmuts/deck/embed?style=hidden" width="640" height="360" title="bob" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/jacquessmuts/deck/embed?style=hidden" width="1280" height="720" title="bob" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 {{< /rawhtml >}}
 
 ## TL;DW
